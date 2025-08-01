@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Welcome, [Teacher Name]</h1>
+    <button onclick="logout()">Logout</button>
+  </header>
+
+  <section class="filters">
+    <h2>Filter MCQs</h2>
+    <label>Unit:
+      <select id="filterUnit"></select>
+    </label>
+    <label>Subtopic:
+      <input type="text" id="filterSubtopic" placeholder="e.g., 1.2 or DB Basics"/>
+    </label>
+    <label>Student Name:
+      <input type="text" id="filterStudentName"/>
+    </label>
+    <label>Enrollment No:
+      <input type="text" id="filterEnrollment"/>
+    </label>
+    <button onclick="applyFilters()">Apply Filters</button>
+    <button onclick="clearFilters()">Clear</button>
+  </section>
+
+  <section class="mcq-review">
+    <h2>Submitted MCQs</h2>
+    <div id="mcqList" class="mcq-list"></div>
+
+    <div class="actions">
+      <button onclick="runAIReview()">AI Review Selected</button>
+      <button onclick="approveSelectedMCQs()">Approve Selected</button>
+    </div>
+  </section>
+
+  <section class="approved-preview">
+    <h2>Preview Approved MCQs</h2>
+    <div id="approvedList"></div>
+    <button onclick="finalSubmit()">Submit to Public</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

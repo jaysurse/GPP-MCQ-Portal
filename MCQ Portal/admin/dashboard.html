@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase.js"></script>
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+
+  <div class="tabs">
+    <button onclick="showTab('addSubject')">Add/Edit Subject</button>
+    <button onclick="showTab('manageSubjects')">Manage Subjects</button>
+    <button onclick="showTab('addDivision')">Manage Divisions</button>
+    <button onclick="showTab('approveTeacher')">Approve Teachers</button>
+    <button onclick="showTab('stats')">User Stats</button>
+    <button onclick="showTab('mcqOverview')">MCQ Overview</button>
+  <button onclick="showTab('userManagement')">User Management</button>
+  <button onclick="showTab('auditLogs')">Audit Logs</button>
+  <button onclick="showTab('teacherRoles')">Teacher Role Settings</button>
+  <button onclick="showTab('accessMapping')">Division-Subject Mapping</button>
+  </div>
+
+  <!-- Add/Edit Subject -->
+  <div class="tab-content" id="addSubject">
+    <h2>Add/Edit Subject</h2>
+    <form id="subjectForm">
+      <label>Subject Name:
+        <input type="text" id="subjectName" required />
+      </label>
+      <label>Number of Units:
+        <select id="unitCount">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+        </select>
+      </label>
+      <div id="unitsContainer"></div>
+      <label>Assign to Divisions:</label>
+      <div id="divisionCheckboxes" class="checkbox-list"></div>
+      <input type="hidden" id="editingSubjectId" />
+      <button type="submit">Save Subject</button>
+    </form>
+    <div id="subjectMsg"></div>
+  </div>
+
+  <!-- Manage Subjects -->
+  <div class="tab-content" id="manageSubjects" style="display:none;">
+    <h2>Manage Subjects</h2>
+    <ul id="subjectList"></ul>
+  </div>
+
+  <!-- Manage Divisions -->
+  <div class="tab-content" id="addDivision" style="display:none;">
+    <h2>Manage Divisions</h2>
+    <form id="divisionForm">
+      <input type="text" id="newDivision" placeholder="Enter new division name" required />
+      <button type="submit">Add Division</button>
+    </form>
+    <ul id="divisionList"></ul>
+  </div>
+
+  <!-- Approve Teachers -->
+  <div class="tab-content" id="approveTeacher" style="display:none;">
+    <h2>Approve Teachers</h2>
+    <ul id="pendingTeachers"></ul>
+  </div>
+
+  <!-- User Stats -->
+  <div class="tab-content" id="stats" style="display:none;">
+    <h2>User Statistics</h2>
+    <p>Students: <span id="studentCount">0</span></p>
+    <p>Teachers: <span id="teacherCount">0</span></p>
+    <p>Total MCQs: <span id="mcqCount">0</span></p>
+    <p>Approved MCQs: <span id="approvedCount">0</span></p>
+    <p>Pending MCQs: <span id="pendingCount">0</span></p>
+  </div>
+
+  <!-- Subject-Level MCQ Overview -->
+  <div class="tab-content" id="mcqOverview" style="display:none;">
+  <h2>MCQ Overview</h2>
+  <select id="filterSubject"></select>
+  <select id="filterUnit"></select>
+  <select id="filterSubtopic"></select>
+  <select id="filterTeacher"></select>
+  <select id="filterStudent"></select>
+  <button onclick="exportMCQs('csv')">Export CSV</button>
+  <button onclick="exportMCQs('pdf')">Export PDF</button>
+  <div id="mcqTable"></div>
+</div>
+
+<!-- User Management -->
+<div class="tab-content" id="userManagement" style="display:none;">
+  <h2>User Management</h2>
+  <ul id="userList"></ul>
+</div>
+
+<!-- Audit Logs -->
+<div class="tab-content" id="auditLogs" style="display:none;">
+  <h2>Audit Logs</h2>
+  <ul id="logList"></ul>
+</div>
+
+<!-- Teacher Role Settings -->
+<div class="tab-content" id="teacherRoles" style="display:none;">
+  <h2>Teacher Role Settings</h2>
+  <select id="teacherSelector"></select>
+  <div id="teacherAssignments"></div>
+</div>
+
+<!-- Access Mapping -->
+<div class="tab-content" id="accessMapping" style="display:none;">
+  <h2>Division-Subject Access Mapping</h2>
+  <div id="mappingPanel"></div>
+</div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
