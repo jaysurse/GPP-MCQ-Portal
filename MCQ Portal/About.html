@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - GPP MCQ PORTAL</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="js/firebase.js"></script>
+</head>
+
+<body>
+  <!-- Animated background elements -->
+  <div class="bg-animation">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+  </div>
+
+  <header class="header">
+    <nav class="nav-container">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h1 class="logo-text">GPP MCQ<span class="highlight"> PORTAL</span></h1>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="login.html" class="nav-link">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">About MCQ PORTAL</h1>
+          <p class="hero-subtitle">Revolutionizing Education at Government Polytechnic Pune</p>
+          <div class="hero-badge">
+            <span class="badge-icon">🎓</span>
+            <span class="badge-text">Built by Students, For Students</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+      <div class="container">
+        <div class="mission-content">
+          <div class="mission-text">
+            <h2 class="section-title">Our Mission</h2>
+            <p class="mission-description">
+              At Government Polytechnic Pune, we believe in the power of technology to transform education.
+              GPP MCQ PORTAL was born from the vision of creating a comprehensive platform that bridges the gap
+              between traditional learning methods and modern digital solutions.
+            </p>
+            <div class="mission-features">
+              <div class="feature-item">
+                <div class="feature-icon">🚀</div>
+                <div class="feature-text">
+                  <h4>Innovation First</h4>
+                  <p>Leveraging cutting-edge technology to enhance learning experiences</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">🤝</div>
+                <div class="feature-text">
+                  <h4>Collaborative Learning</h4>
+                  <p>Fostering collaboration between students, teachers, and administrators</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">📊</div>
+                <div class="feature-text">
+                  <h4>Data-Driven Insights</h4>
+                  <p>Providing actionable analytics to improve academic performance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mission-visual">
+            <div class="floating-card">
+              <div class="card-header">
+                <div class="college-logo">🏛️</div>
+                <div class="college-info">
+                  <h3>Government Polytechnic Pune</h3>
+                  <p>Excellence in Technical Education</p>
+                </div>
+              </div>
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <div class="stat-number">5000+</div>
+                  <div class="stat-label">Students</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">200+</div>
+                  <div class="stat-label">Faculty</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">15+</div>
+                  <div class="stat-label">Departments</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">50+</div>
+                  <div class="stat-label">Years Legacy</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="container">
+        <h2 class="section-title">Meet Our Developers</h2>
+        <p class="section-subtitle">Passionate students creating solutions for the future</p>
+
+        <div class="team-grid">
+          <!-- Jay Surse -->
+          <div class="team-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="avatar-container">
+                  <div class="avatar jay-avatar">
+                    <span class="avatar-text">JS</span>
+                  </div>
+                  <div class="avatar-glow"></div>
+                </div>
+                <h3 class="member-name">Jay Surse</h3>
+                <p class="member-role">Full Stack Developer</p>
+                <p class="member-department">Computer Engineering</p>
+                <div class="member-skills">
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">Firebase</span>
+                </div>
+              </div>
+              <div class="card-back">
+                <div class="card-back-content">
+                  <h4>Connect with Jay</h4>
+                  <p class="member-bio">
+                    Passionate about creating innovative web solutions and exploring the latest
+                    technologies in full-stack development.
+                  </p>
+                  <div class="social-links">
+                    <a href="https://linkedin.com/in/jay-surse" target="_blank" class="social-link linkedin">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                    </a>
+                    <a href="https://github.com/jay-surse" target="_blank" class="social-link github">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                    </a>
+                    <a href="https://instagram.com/jay_surse" target="_blank" class="social-link instagram">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vivek Jangam -->
+          <div class="team-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="avatar-container">
+                  <div class="avatar vivek-avatar">
+                    <span class="avatar-text">VJ</span>
+                  </div>
+                  <div class="avatar-glow"></div>
+                </div>
+                <h3 class="member-name">Vivek Jangam</h3>
+                <p class="member-role">Frontend Developer</p>
+                <p class="member-department">Computer Engineering</p>
+                <div class="member-skills">
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">CSS</span>
+                  <span class="skill-tag">UI/UX</span>
+                </div>
+              </div>
+              <div class="card-back">
+                <div class="card-back-content">
+                  <h4>Connect with Vivek</h4>
+                  <p class="member-bio">
+                    Dedicated to crafting beautiful user interfaces and creating seamless
+                    user experiences through thoughtful design and code.
+                  </p>
+                  <div class="social-links">
+                    <a href="https://linkedin.com/in/vivek-jangam" target="_blank" class="social-link linkedin">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                    </a>
+                    <a href="https://github.com/vivek-jangam" target="_blank" class="social-link github">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                    </a>
+                    <a href="https://instagram.com/vivek_jangam" target="_blank" class="social-link instagram">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="container">
+        <h2 class="section-title">Our Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <h3>Excellence</h3>
+            <p>We strive for excellence in every line of code and every user interaction.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌟</div>
+            <h3>Innovation</h3>
+            <p>Constantly pushing boundaries to create cutting-edge educational solutions.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Collaboration</h3>
+            <p>Building bridges between students, faculty, and administration through technology.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🚀</div>
+            <h3>Impact</h3>
+            <p>Creating meaningful change in the educational landscape of our institution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-main">
+        <p>© 2025 GPP MCQ PORTAL | Government Polytechnic Pune</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+      <div class="footer-credits">
+        <p>Crafted with ❤️ by <span class="creator-name">Jay Surse</span> & <span class="creator-name">Vivek
+            Jangam</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -4,34 +4,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MCQ Management System</title>
+  <title>GPP MCQ PORTAL</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script type="module" src="js/firebase.js"></script>
 </head>
 
 <body>
-  <header>
-    <div class="header-container">
-      <img src="assets/logo.png" alt="Logo" class="logo" />
-      <h1>MCQ Management System</h1>
-    </div>
+
+  <div class="bg-animation">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+  </div>
+
+  <header class="header">
+    <nav class="nav-container">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h1 class="logo-text">GPP MCQ<span class="highlight"> PORTAL</span></h1>
+      </div>
+
+      <div class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="About.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </nav>
   </header>
 
   <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <h2>Empowering Students. Guiding Teachers. Controlled by Admins.</h2>
-      <p>A collaborative platform to create, review, and learn from MCQs.</p>
-      <div class="buttons">
-        <a href="login.html" class="btn">Login</a>
-        <a href="register.html" class="btn">Register</a>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h2 class="hero-title">
+            <span class="title-line">Empowering Students.</span>
+            <span class="title-line">Guiding Teachers.</span>
+            <span class="title-line gradient-text">Controlled by Admins.</span>
+          </h2>
+          <p class="hero-description">
+            Transform your educational experience with our cutting-edge MCQ management platform.
+            Create, collaborate, and excel in a seamless digital environment.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="login.html" class="btn btn-primary">
+              <span>Get Started</span>
+              <div class="btn-icon">→</div>
+            </a>
+            <a href="register.html" class="btn btn-secondary">
+              <span>Join Now</span>
+              <div class="btn-glow"></div>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="floating-card card-1">
+            <div class="card-header">
+              <div class="card-icon">📚</div>
+              <div class="card-title">SET , BEE , BET MCQ</div>
+            </div>
+            <div class="card-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 78%"></div>
+              </div>
+              <span class="progress-text">78% Complete</span>
+            </div>
+          </div>
+
+          <div class="floating-card card-2">
+            <div class="card-header">
+              <div class="card-icon">🎯</div>
+              <div class="card-title">Quiz Results</div>
+            </div>
+            <div class="card-score">
+              <div class="score-circle">
+                <div class="score-text">95<span>%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-card card-3">
+            <div class="card-header">
+              <div class="card-icon">👥</div>
+              <div class="card-title">Active Users</div>
+            </div>
+            <div class="user-avatars">
+              <div class="avatar avatar-1"></div>
+              <div class="avatar avatar-2"></div>
+              <div class="avatar avatar-3"></div>
+              <div class="avatar-count">+1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="scroll-text">Explore Features</div>
+        <div class="scroll-arrow">↓</div>
+      </div>
+    </section>
+
+
+    <section id="features" class="features">
+      <div class="container">
+        <h3 class="section-title">Why Choose GPP MCQ PORTAL?</h3>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h4>Lightning Fast</h4>
+            <p>Experience blazing-fast performance with real-time updates and instant feedback.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h4>Secure & Reliable</h4>
+            <p>Bank-grade security ensures your data is protected with enterprise-level encryption.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h4>Advanced Analytics</h4>
+            <p>Gain deep insights with comprehensive analytics and detailed performance reports.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h4>Beautiful Interface</h4>
+            <p>Enjoy a stunning, intuitive interface designed for maximum productivity and engagement.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>  
-    <p>© 2025 MCQ Management System | Designed for Educational Institutions</p>
-    <p>Crafted by Jay Surse & Vivek Jangam</p>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-main">
+        <p>© 2025 GPP MCQ PORTAL| Designed for Educational Excellence</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+      <div class="footer-credits">
+        <p>Crafted with ❤️ by <span class="creator-name">Jay Surse</span> & <span class="creator-name">Vivek
+            Jangam</span></p>
+      </div>
+    </div>
   </footer>
 
   <script src="js/script.js"></script>
