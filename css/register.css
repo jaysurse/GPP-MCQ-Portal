@@ -559,7 +559,7 @@ select.valid {
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.3);
     --text-primary: #ffffff;
-    --text-secondary: #e5e5e5;
+    --text-secondary: #000000;
   }
 }
 
