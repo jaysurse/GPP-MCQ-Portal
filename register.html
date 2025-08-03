@@ -11,93 +11,74 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-  <!-- Firebase config -->
+  <!-- Your Firebase config -->
   <script src="./js/firebase.js"></script>
 </head>
 
 <body>
   <h1>Register</h1>
 
-  <div id="errorMsg" style="color: red;"></div>
-  <div id="successMsg" style="color: green;"></div>
-
   <form id="registerForm">
     <label>
       Name:
-      <input type="text" id="name" name="name" required />
-    </label><br />
+      <input type="text" id="name" required />
+    </label><br>
 
     <label>
       Email:
-      <input type="email" id="email" name="email" required />
-    </label><br />
+      <input type="email" id="email" required />
+    </label><br>
 
     <label>
       Password:
-      <input type="password" id="password" name="password" required />
-    </label><br />
+      <input type="password" id="password" required />
+    </label><br>
 
     <label>
       Role:
       <input type="radio" name="role" value="student" checked> Student
       <input type="radio" name="role" value="teacher"> Teacher
       <input type="radio" name="role" value="admin"> Admin
-    </label><br />
+    </label><br>
 
+    <!-- Student Fields -->
     <div id="studentFields">
       <label>
         Division:
-        <select id="studentDivision" name="studentDivision" required>
+        <select id="studentDivision" name="studentDivision">
           <option value="" disabled selected>Select Division</option>
         </select>
-      </label><br />
+      </label><br>
     </div>
 
+    <!-- Teacher Fields -->
     <div id="teacherFields" style="display: none;">
       <label>
         Division:
-        <select id="teacherDivision" name="teacherDivision" required>
-          <option value="" disabled selected>Select Division</option>
+        <select id="teacherDivision" name="teacherDivision">
+          <option value="" selected>Select Division</option>
         </select>
-      </label><br />
+      </label><br>
       <label>
         Subject:
-        <select id="teacherSubject" name="teacherSubject" required>
-          <option value="" disabled selected>Select Subject</option>
+        <select id="teacherSubject" name="teacherSubject">
+          <option value="" selected>Select Subject</option>
         </select>
-      </label><br />
+      </label><br>
     </div>
 
+    <!-- Admin Fields -->
     <div id="adminFields" style="display: none;">
       <label>
         Admin Key:
-        <input type="text" id="adminKey" name="adminKey">
-      </label><br />
+        <input type="text" id="adminKey">
+      </label><br>
     </div>
 
     <button type="submit">Register</button>
   </form>
 
   <script src="./js/register.js"></script>
-
-  <script>
-    // Show/hide sections based on selected role
-    document.querySelectorAll('input[name="role"]').forEach((input) => {
-      input.addEventListener('change', () => {
-        const role = input.value;
-
-        document.getElementById("studentFields").style.display = role === "student" ? "block" : "none";
-        document.getElementById("teacherFields").style.display = role === "teacher" ? "block" : "none";
-        document.getElementById("adminFields").style.display = role === "admin" ? "block" : "none";
-
-        // Clear or disable irrelevant fields
-        document.getElementById("studentDivision").disabled = role !== "student";
-        document.getElementById("teacherDivision").disabled = role !== "teacher";
-        document.getElementById("teacherSubject").disabled = role !== "teacher";
-        document.getElementById("adminKey").disabled = role !== "admin";
-      });
-    });
-  </script>
 </body>
 
 </html>

@@ -1,155 +1,117 @@
-
-
-let allMCQs = [];
-
 document.addEventListener("DOMContentLoaded", () => {
-  auth.onAuthStateChanged(async (user) => {
-    if (!user) {
-      alert("You must log in first.");
-      location.href = "../login.html";
-      return;
-    }
+  const registerForm = document.getElementById("registerForm");
+  const roleInputs = document.querySelectorAll('input[name="role"]');
 
-    const uid = user.uid;
-    const userDoc = await db.collection("users").doc(uid).get();
-    const userData = userDoc.data();
-    if (!userData || !userData.subject || !userData.division) {
-      alert("Invalid user data.");
-      return;
-    }
-
-    loadSubjects(userData.subject);
-    populateSubjectDropdown(userData.subject);
-    loadUnits(userData.subject);
-    loadApprovedMCQs(userData.subject, userData.division);
+  roleInputs.forEach(input => {
+    input.addEventListener("change", toggleRoleFields);
   });
 
-  document.getElementById("subject").addEventListener("change", (e) => {
-    loadUnits(e.target.value);
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const role = document.querySelector('input[name="role"]:checked').value;
+
+    let division = null;
+    let subject = null;
+    let adminKey = null;
+
+    if (role === "student") {
+      division = document.getElementById("studentDivision").value;
+    } else if (role === "teacher") {
+      division = document.getElementById("teacherDivision").value;
+      subject = document.getElementById("teacherSubject").value;
+    } else if (role === "admin") {
+      adminKey = document.getElementById("adminKey").value;
+      if (adminKey !== "yourSecretKey") {
+        alert("Invalid Admin Key");
+        return;
+      }
+    }
+
+    try {
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+      const uid = userCredential.user.uid;
+
+      const userData = {
+  name,
+  email,
+  role,
+  createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+};
+
+// Common for both students and teachers
+if (division) userData.division = division;
+
+// Teacher-specific: subject and approval flag
+if (role === "teacher") {
+  userData.subject = subject;
+  userData.approved = false; // ✅ new field added
+}
+
+
+      await firebase.firestore().collection("users").doc(uid).set(userData);
+
+      alert("Registration successful!");
+
+      if (role === "teacher") {
+  alert("Your account has been created but is pending admin approval.");
+}
+
+      window.location.href = `/${role}/dashboard.html;` // redirect to respective dashboard
+
+    } catch (error) {
+      console.error("Registration error:", error);
+      alert("Failed to register: " + error.message);
+    }
   });
 
-  document.getElementById("mcq-form").addEventListener("submit", submitMCQ);
+  // Load division and subject options from Firestore
+  loadDivisions();
+  loadSubjects();
+  toggleRoleFields(); // <-- this is the missing piece
 
-  document.getElementById("filterSubject").addEventListener("change", filterMCQs);
-  document.getElementById("filterUnit").addEventListener("change", filterMCQs);
-  document.getElementById("filterSubtopic").addEventListener("change", filterMCQs);
 });
 
-function loadSubjects(subject) {
-  document.getElementById("subjects-list").innerHTML = `<li>${subject}</li>`;
+function toggleRoleFields() {
+  const role = document.querySelector('input[name="role"]:checked').value;
+
+  const studentFields = document.getElementById("studentFields");
+  const teacherFields = document.getElementById("teacherFields");
+  const adminFields = document.getElementById("adminFields");
+
+  studentFields.style.display = role === "student" ? "block" : "none";
+  teacherFields.style.display = role === "teacher" ? "block" : "none";
+  adminFields.style.display = role === "admin" ? "block" : "none";
+
+  // Toggle required attribute safely
+  document.getElementById("studentDivision").required = role === "student";
+  document.getElementById("teacherDivision").required = role === "teacher";
+  document.getElementById("teacherSubject").required = role === "teacher";
+  document.getElementById("adminKey").required = role === "admin";
 }
 
-function populateSubjectDropdown(subject) {
-  const dropdown = document.getElementById("subject");
-  dropdown.innerHTML = `<option value="${subject}">${subject}</option>`;
-}
+async function loadDivisions() {
+  const divisionsSnap = await firebase.firestore().collection("divisions").get();
+  const divisions = divisionsSnap.docs.map(doc => doc.id);
 
-async function loadUnits(subjectName) {
-  const unitDropdown = document.getElementById("unit");
-  unitDropdown.innerHTML = "";
+  const studentSelect = document.getElementById("studentDivision");
+  const teacherSelect = document.getElementById("teacherDivision");
 
-  const subjectsSnap = await db.collection("subjects")
-    .where("subject", "==", subjectName)
-    .get();
-
-  if (!subjectsSnap.empty) {
-    const units = subjectsSnap.docs[0].data().units || [];
-    units.forEach(unit => {
-      const opt = new Option(`Unit ${unit.unit}`, `Unit ${unit.unit}`);
-      unitDropdown.appendChild(opt);
-    });
-  }
-}
-
-async function submitMCQ(e) {
-  e.preventDefault();
-  const mcq = {
-    subject: document.getElementById("subject").value,
-    unit: document.getElementById("unit").value,
-    subtopic: document.getElementById("subtopic").value,
-    question: document.getElementById("question").value,
-    options: {
-      A: document.getElementById("optionA").value,
-      B: document.getElementById("optionB").value,
-      C: document.getElementById("optionC").value,
-      D: document.getElementById("optionD").value,
-    },
-    correct: document.getElementById("correctOption").value,
-    status: "pending",
-    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    userId: auth.currentUser.uid
-  };
-
-  await db.collection("mcqs").add(mcq);
-  alert("MCQ submitted successfully!");
-  e.target.reset();
-}
-
-async function loadApprovedMCQs(subject, divisions) {
-  const mcqsSnap = await db.collection("mcqs")
-    .where("status", "==", "approved")
-    .where("subject", "==", subject)
-    .get();
-
-  allMCQs = mcqsSnap.docs
-    .map(doc => doc.data())
-    .filter(mcq => divisions.includes(mcq.division));
-
-  populateMCQTable(allMCQs);
-  populateFilters(allMCQs);
-}
-
-function populateMCQTable(mcqs) {
-  const body = document.getElementById("mcq-table-body");
-  body.innerHTML = "";
-
-  mcqs.forEach(mcq => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${mcq.subject}</td>
-      <td>${mcq.unit}</td>
-      <td>${mcq.subtopic}</td>
-      <td>${mcq.question}</td>
-      <td>${mcq.options.A}</td>
-      <td>${mcq.options.B}</td>
-      <td>${mcq.options.C}</td>
-      <td>${mcq.options.D}</td>
-      <td>${mcq.correct}</td>
-    `;
-    body.appendChild(tr);
+  divisions.forEach(division => {
+    studentSelect.appendChild(new Option(division, division));
+    teacherSelect.appendChild(new Option(division, division));
   });
 }
 
-function populateFilters(mcqs) {
-  const filterSubject = document.getElementById("filterSubject");
-  const filterUnit = document.getElementById("filterUnit");
-  const filterSubtopic = document.getElementById("filterSubtopic");
+async function loadSubjects() {
+  const subjectsSnap = await firebase.firestore().collection("subjects").get();
+  const subjectSelect = document.getElementById("teacherSubject");
 
-  const subjects = [...new Set(mcqs.map(m => m.subject))];
-  const units = [...new Set(mcqs.map(m => m.unit))];
-  const subtopics = [...new Set(mcqs.map(m => m.subtopic))];
-
-  subjects.forEach(s => filterSubject.appendChild(new Option(s, s)));
-  units.forEach(u => filterUnit.appendChild(new Option(u, u)));
-  subtopics.forEach(st => filterSubtopic.appendChild(new Option(st, st)));
-}
-
-function filterMCQs() {
-  const subject = document.getElementById("filterSubject").value;
-  const unit = document.getElementById("filterUnit").value;
-  const subtopic = document.getElementById("filterSubtopic").value;
-
-  let filtered = [...allMCQs];
-
-  if (subject) filtered = filtered.filter(m => m.subject === subject);
-  if (unit) filtered = filtered.filter(m => m.unit === unit);
-  if (subtopic) filtered = filtered.filter(m => m.subtopic === subtopic);
-
-  populateMCQTable(filtered);
-}
-
-function logout() {
-  auth.signOut().then(() => {
-    window.location.href = "../login.html";
+  subjectsSnap.forEach(doc => {
+    const subject = doc.data().subject;
+    subjectSelect.appendChild(new Option(subject, subject));
   });
 }

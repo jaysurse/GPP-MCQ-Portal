@@ -239,6 +239,7 @@ select {
   transition: all var(--transition-normal);
   box-shadow: var(--shadow-xs);
   font-weight: 500;
+  color: #000000;
 }
 
 input::placeholder {
