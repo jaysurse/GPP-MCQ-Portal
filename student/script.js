@@ -1,3 +1,28 @@
+firebase.auth().onAuthStateChanged(async (user) => {
+  if (user) {
+    try {
+      const doc = await firebase
+        .firestore()
+        .collection("users")
+        .doc(user.uid)
+        .get();
+      if (doc.exists) {
+        const userData = doc.data();
+        document.getElementById("userName").textContent =
+          userData.name || "Unknown";
+        document.getElementById("userRole").textContent =
+          userData.role || "Student";
+      } else {
+        console.error("User data not found.");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  } else {
+    // User not logged in, redirect to login page
+    window.location.href = "/login.html";
+  }
+});
 
 // Simulated data fetch
 document.addEventListener("DOMContentLoaded", () => {

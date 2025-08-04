@@ -60,7 +60,7 @@ if (role === "teacher") {
   alert("Your account has been created but is pending admin approval.");
 }
 
-      window.location.href = `/${role}/dashboard.html;` // redirect to respective dashboard
+      window.location.href = `/${role}/dashboard.html`; // redirect to respective dashboard
 
     } catch (error) {
       console.error("Registration error:", error);
